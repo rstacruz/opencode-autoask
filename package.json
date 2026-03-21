@@ -13,9 +13,16 @@
         "dev": "opencode plugin dev",
         "typecheck": "tsc --noEmit",
         "format": "prettier --write .",
-        "format:check": "prettier --check ."
+        "format:check": "prettier --check .",
+        "link": "mkdir -p ~/.config/opencode/plugin && rm -f ~/.config/opencode/plugin/autoask.ts && ln -nfs \"$(pwd)/index.ts\" ~/.config/opencode/plugin/autoask.ts",
+        "link-copy": "mkdir -p ~/.config/opencode/plugin && cp --remove-destination index.ts ~/.config/opencode/plugin/autoask.ts"
     },
-    "keywords": ["opencode", "opencode-plugin", "plugin", "autoask"],
+    "keywords": [
+        "opencode",
+        "opencode-plugin",
+        "plugin",
+        "autoask"
+    ],
     "author": "rstacruz",
     "license": "MIT",
     "peerDependencies": {
@@ -27,5 +34,9 @@
         "prettier": "^3.0.0",
         "typescript": "^5.0.0"
     },
-    "files": ["dist/", "README.md", "LICENSE"]
+    "files": [
+        "dist/",
+        "README.md",
+        "LICENSE"
+    ]
 }

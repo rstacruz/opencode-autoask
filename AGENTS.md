@@ -9,6 +9,8 @@ npm install       # install deps
 npm run build     # compile TypeScript → dist/
 npm run typecheck # type-check without emitting
 npm run format    # format with prettier
+npm run link      # symlink index.ts → ~/.config/opencode/plugin/autoask.ts
+npm run link-copy # copy index.ts → ~/.config/opencode/plugin/autoask.ts
 ```
 
 ## Publishing

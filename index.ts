@@ -10,24 +10,30 @@ question[0].options: <3-4 suggestions on next steps>
 const plugin: Plugin = async (ctx) => {
     return {
         "experimental.chat.messages.transform": async (_input, output) => {
+            let userMsg
             for (let i = output.messages.length - 1; i >= 0; i--) {
-                const msg = output.messages[i]
-                if (msg.info.role !== "user") continue
-
-                // Skip subagent sessions — they don't need follow-up questions
-                try {
-                    const session = await ctx.client.session.get({ path: { id: msg.info.sessionID } })
-                    if (session.data?.parentID) return
-                } catch {
-                    // if session lookup fails, proceed as normal
+                if (output.messages[i].info.role === "user") {
+                    userMsg = output.messages[i]
+                    break
                 }
+            }
+            if (!userMsg) return
 
-                for (let j = msg.parts.length - 1; j >= 0; j--) {
-                    const part = msg.parts[j]
-                    if (part.type !== "text") continue
-                    part.text = part.text + "\n\n" + PROMPT
-                    return
-                }
+            // Skip subagent sessions — they don't need follow-up questions
+            try {
+                const session = await ctx.client.session.get({
+                    path: { id: userMsg.info.sessionID },
+                })
+                if (session.data?.parentID) return
+            } catch {
+                // if session lookup fails, proceed as normal
+            }
+
+            for (let j = userMsg.parts.length - 1; j >= 0; j--) {
+                const part = userMsg.parts[j]
+                if (part.type !== "text") continue
+                part.text = part.text + "\n\n" + PROMPT
+                return
             }
         },
     }
