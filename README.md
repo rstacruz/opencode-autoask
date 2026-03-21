@@ -1,12 +1,6 @@
 # opencode-autoask
 
-An [OpenCode](https://opencode.ai) plugin that automatically prompts the LLM to offer follow-up options after every response.
-
-After each assistant message, the LLM is instructed to call the `question` tool with a brief summary and 3–4 next-step suggestions.
-
-## Why
-
-For providers that charge per request (GitHub Copilot) this prevents subsequent messages from consuming credits.
+An [OpenCode](https://opencode.ai) plugin that makes agents automatically use the `question` tool to offer follow-up suggestions after every response. This helps you give feedback faster.
 
 ## Install
 
@@ -43,6 +37,10 @@ Done. I've done that.
   ┃     Make further changes to the plugin
   ┃  4. Type your own answer
 ```
+
+## Note
+
+For providers that charge per user request (and not tool calls), this plugin can change the number of user requests you make and get billed for.
 
 ## License
 
