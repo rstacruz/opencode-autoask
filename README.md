@@ -20,6 +20,30 @@ Add to your `opencode.jsonc`:
 
 No other configuration needed.
 
+## Example
+
+```
+> can u update package.json with a 'npm run link' script with ... (snip)
+
+.
+.
+.
+
+Done. I've done that.
+
+[Asking 1 question...]
+
+  ┃ Added link npm script. What shall we do next?
+  ┃
+  ┃  1. Publish to npm
+  ┃     Release a new version to npm
+  ┃  2. All done
+  ┃     Nothing more to do
+  ┃  3. Keep working on plugin
+  ┃     Make further changes to the plugin
+  ┃  4. Type your own answer
+```
+
 ## License
 
 MIT
